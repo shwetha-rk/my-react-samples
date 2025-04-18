@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Default theme (blue) */
+  --color-primary-blue: #3b82f6;
+  --color-primary-green: #22c55e;
+  --color-primary-purple: #a855f7;
+  --color-primary-pink: #ec4899;
+}
+
+
+
+
+/* Theme-specific colors */
+[data-color-theme='blue'] .bg-blue-500{
+  background-color:var(--color-primary-blue) !important;
+}
+ 
+[data-color-theme='green'] .bg-blue-500{
+  background-color: var(--color-primary-green) !important;
+}
+
+[data-color-theme='purple'] .bg-blue-500{
+  background-color:var(--color-primary-purple) !important;
+}
+
+[data-color-theme='pink'] .bg-blue-500{
+  background-color: var(--color-primary-pink) !important;
+}
+
+[data-color-theme='pink'] .bg-blue-500{
+  background-color: var(--color-primary-pink) !important;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
