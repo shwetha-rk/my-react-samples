@@ -1,6 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { UserProvider } from './contexts/UserContext';
 import { PeriodTrackerProvider } from './contexts/PeriodTrackerContext';
@@ -13,28 +12,28 @@ import PeriodTracker from './pages/PeriodTracker';
 import './App.css';
 
 function App() {
-  const history = createBrowserHistory();
-
   return (
     <ThemeProvider>
       <UserProvider>
         <PeriodTrackerProvider>
-          <Router location={history.location} navigator={history}>
-            <MainLayout>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/period-tracker" element={<PeriodTracker />} />
-            </MainLayout>
-          </Router>
-          <Toaster position="top-right" toastOptions={{
-            className: 'dark:bg-gray-800 dark:text-white',
-            duration: 3000,
-            style: {
-              background: 'var(--toast-bg)',
-              color: 'var(--toast-color)',
-            },
-          }} />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<MainLayout />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="period-tracker" element={<PeriodTracker />} />
+              </Route>
+            </Routes>
+            <Toaster position="top-right" toastOptions={{
+              className: 'dark:bg-gray-800 dark:text-white',
+              duration: 3000,
+              style: {
+                background: 'var(--toast-bg)',
+                color: 'var(--toast-color)',
+              },
+            }} />
+          </BrowserRouter>
         </PeriodTrackerProvider>
       </UserProvider>
     </ThemeProvider>
