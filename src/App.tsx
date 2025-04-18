@@ -19,6 +19,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <h1>Welcome to SRK App</h1>
     </div>
   );
 }
