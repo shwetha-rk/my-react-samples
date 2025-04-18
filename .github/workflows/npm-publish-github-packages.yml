@@ -11,4 +11,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build & Deploy React app to GitHub Pages
-      uses: shwetha-rk/my-react-samples@v1.0.0
+      uses: shwetha-rk/my-react-samples@v0.1.0
