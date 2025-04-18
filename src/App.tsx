@@ -16,24 +16,22 @@ function App() {
     <ThemeProvider>
       <UserProvider>
         <PeriodTrackerProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<MainLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="period-tracker" element={<PeriodTracker />} />
-              </Route>
-            </Routes>
-            <Toaster position="top-right" toastOptions={{
-              className: 'dark:bg-gray-800 dark:text-white',
-              duration: 3000,
-              style: {
-                background: 'var(--toast-bg)',
-                color: 'var(--toast-color)',
-              },
-            }} />
-          </BrowserRouter>
+          <Router location={history.location} navigator={history}>
+            <MainLayout>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/period-tracker" element={<PeriodTracker />} />
+            </MainLayout>
+          </Router>
+          <Toaster position="top-right" toastOptions={{
+            className: 'dark:bg-gray-800 dark:text-white',
+            duration: 3000,
+            style: {
+              background: 'var(--toast-bg)',
+              color: 'var(--toast-color)',
+            },
+          }} />
         </PeriodTrackerProvider>
       </UserProvider>
     </ThemeProvider>
