@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom'; // Note 1
+
 import { ThemeProvider } from './contexts/ThemeContext';
 import { UserProvider } from './contexts/UserContext';
 import { PeriodTrackerProvider } from './contexts/PeriodTrackerContext';
@@ -16,7 +18,7 @@ function App() {
     <ThemeProvider>
       <UserProvider>
         <PeriodTrackerProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Routes>
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<Home />} />
@@ -33,7 +35,7 @@ function App() {
                 color: 'var(--toast-color)',
               },
             }} />
-          </BrowserRouter>
+          </HashRouter>
         </PeriodTrackerProvider>
       </UserProvider>
     </ThemeProvider>
