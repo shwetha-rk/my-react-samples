@@ -1,28 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { UserProvider } from './contexts/UserContext';
+import { PeriodTrackerProvider } from './contexts/PeriodTrackerContext';
+import { Toaster } from 'react-hot-toast';
+import MainLayout from './layouts/MainLayout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import PeriodTracker from './pages/PeriodTracker';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to SRK App</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-      </header>
-
-    </div>
+    <HelmetProvider>
+      <ThemeProvider>
+        <UserProvider>
+          <PeriodTrackerProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<MainLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="period-tracker" element={<PeriodTracker />} />
+                </Route>
+              </Routes>
+              <Toaster position="top-right" toastOptions={{
+                className: 'dark:bg-gray-800 dark:text-white',
+                duration: 3000,
+                style: {
+                  background: 'var(--toast-bg)',
+                  color: 'var(--toast-color)',
+                },
+              }} />
+            </BrowserRouter>
+          </PeriodTrackerProvider>
+        </UserProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 
